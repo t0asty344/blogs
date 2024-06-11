@@ -1,0 +1,50 @@
+<%- include("partials/header.ejs")%>
+
+
+
+
+
+<h1 >Blog post</h1>
+<h2>
+    <% if(locals.blogs_name){ %>
+    <%=blogs_name  %>
+    <% } %>
+</h2>
+<p name="blog" id="Blog">
+    <% if(locals.blogtext){ %>
+    <%=blogtext %>
+    <% } %>
+</p>
+
+<form action="/submit" method="POST">
+    <% if(locals.inputs){ %>
+    <%-inputs %>
+    <% } %>
+
+    <input type="submit" value="Create new blog">
+    
+</form>
+
+    <ul>
+        <%if(locals.bloglist){%>
+        <%-bloglist %>
+        <% } %>
+    </ul>
+    
+<form action="/" method="get">
+    <input type="submit" value="go home">
+</form>
+
+
+<%if(locals.onlist){  %>
+    <form action="/edit" method="post">
+        <%-putinput  %>
+        <input type="submit" value ="edit post">
+    </form>
+<% } %>
+<% if(locals.onlist){ %>
+    <form action="/delete" method="post">
+        <input type="submit" value ="delete post">
+    </form>
+<% } %>
+<%- include("partials/footer.ejs")%>
